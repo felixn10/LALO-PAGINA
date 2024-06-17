@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Celulares</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .store-info {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .store-info h1 {
+            margin: 0;
+        }
+        .store-info p {
+            margin: 5px 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .product {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .product img {
+            width: 200px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .product h2 {
+            margin-top: 0;
+        }
+        .product p {
+            margin-bottom: 10px;
+        }
+        .product button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .product-info {
+        flex: 1; 
+    }
+        .product button:hover {
+            background-color: #45a049;
+        }
+        .map {
+            margin-bottom: 20px;
+        }
+        .contact-info {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="store-info">
+            <h1>TecnoCity</h1>
+            <p>¡Encuentra tu celular perfecto con nosotros!</p>
+            <img src="logo.png" alt="logo">
+        </div>
+    </header>
+    <div class="container">
+        <div class="contact-info">
+            <p>Contáctanos: <a href="tel:4421057799">442-105-7799</a></p>
+            <a href="prueba.html" class="btn">Inicio</a>          
+            <a href="tiend.html" class="btn">Ver Celulares</a>
+            <a href="tienda.html" class="btn">Ver otros productos</a>
+            <a href="carrito.html" class="btn">Carrito</a>      
+        </div>
+        <div class="product">
+            <img src="funda1.jpeg" alt="iPhone"id="1">
+            <div class="product-info">
+            <h2>Funda de iPhone 13 Pro</h2>
+            <p>Color: Negro</p>
+            <p>material: plastico suave</p>
+            <p>Precio: USD.$52.35</p>
+            <button onclick="agregarAlCarrito('Funda de iPhone 13 Pro', '52.35')">Agregar al Carrito</button>
+        </div>
+        </div>
+        <div class="product">
+        <img src="funda2.jpg" alt="iPhone"id="2">
+        <div class="product-info">
+        <h2>Funda de sansumg S21 Ultra</h2>
+        <p>Color: Negro</p>
+        <p>material: plastico suave</p>
+        <p>Precio: USD.$29.99</p>
+        <button onclick="agregarAlCarrito('Funda de sansumg S21 Ultra', '29.99')">Agregar al Carrito</button>
+    </div>
+        </div>
+    <div class="product">
+        <img src="funda3.jpg" alt="iPhone"id="3">
+        <div class="product-info">
+        <h2>Funda de Huawei P40 Pro</h2>
+        <p>Color: transparente</p>
+        <p>material: plastico suave</p>
+        <p>Precio: USD.$9.99</p>
+        <button onclick="agregarAlCarrito('Funda de Huawei P40 Pro', '9.99')">Agregar al Carrito</button>
+    </div>
+    </div>
+    <div class="product">
+        <img src="funda4.jpg" alt="iPhone"id="4">
+        <div class="product-info">
+        <h2>Funda de Xiaomi Mi 11</h2>
+        <p>Color: Azul</p>
+        <p>material: plastico suave</p>
+        <p>Precio: USD.$25.35</p>
+        <button onclick="agregarAlCarrito('Funda de Xiaomi Mi 11', '25.35')">Agregar al Carrito</button>
+    </div>
+    </div>
+    <div class="product">
+        <img src="funda5.jpeg" alt="iPhone"id="5">
+        <div class="product-info">
+        <h2>funda de Google Pixel 6</h2>
+        <p>Color: cafe</p>
+        <p>material: piel sintetica</p>
+        <p>Precio: USD.$39.99</p>
+        <button onclick="agregarAlCarrito('funda de Google Pixel 6', '39.99')">Agregar al Carrito</button>
+    </div>
+    </div>
+    <div class="product">
+        <img src="funda6.jpeg" alt="iPhone"id="6">
+        <div class="product-info">
+        <h2>Funda de OnePlus 9 Pro</h2>
+        <p>Color: gris</p>
+        <p>material: plastico suave</p>
+        <p>Precio: USD.$19.99</p>
+        <button onclick="agregarAlCarrito('Funda de OnePlus 9 Pro', '19.99')">Agregar al Carrito</button>
+    </div>
+    </div>
+    <div class="product">
+        <img src="funda7.jpeg" alt="iPhone"id="7">
+        <div class="product-info">
+        <h2>Funda de Motorola Edge 20</h2>
+        <p>Color: Negro </p>
+        <p>material: plastico suave</p>
+        <p>Precio: USD.$19.99</p>
+        <button onclick="agregarAlCarrito('Funda de Motorola Edge 20', '19.99')">Agregar al Carrito</button>
+    </div>
+    </div>
+    <div class="product">
+        <img src="funda8.jpg" alt="iPhone"id="8">
+        <div class="product-info">
+        <h2>Funda de LG Velvet</h2>
+        <p>Color: Negro y transparente</p>
+        <p>material: plastico suave</p>
+        <p>Precio: USD.$9.99</p>
+        <button onclick="agregarAlCarrito('Funda de LG Velvet', '9.99')">Agregar al Carrito</button>
+    </div>
+    </div>
+    <div class="product">
+        <img src="funda9.jpg" alt="iPhone"id="9">
+        <div class="product-info">
+        <h2>Funda de Sony Xperia 5 III </h2>
+        <p>Color: transparente</p>
+        <p>material: plastico suave</p>
+        <p>Precio: USD.$9.99</p>
+        <button onclick="agregarAlCarrito('Funda de Sony Xperia 5 III', '9.99')">Agregar al Carrito</button>
+    </div>
+    </div>
+    <div class="product">
+        <img src="funda11.jpg" alt="iPhone"id="10">
+        <div class="product-info">
+        <h2>Funda de Asus ROG Phone 5</h2>
+        <p>Color: Negro</p>
+        <p>material: plastico rijido</p>
+        <p>Precio: USD.$29.99</p>
+        <button onclick="agregarAlCarrito('Funda de Asus ROG Phone 5', '29.99')">Agregar al Carrito</button>
+    </div>
+    </div>
+    <div class="product">
+        <img src="funda12.jpeg" alt="iPhone"id="11">
+        <div class="product-info">
+        <h2>Funda de AirPods pro 2 generacion</h2>
+        <p>Color: rosa</p>
+        <p>material: plastico suave</p>
+        <p>Precio: USD.$9.99</p>
+        <button onclick="agregarAlCarrito('Funda de AirPods pro 2 generacion', '9.99')">Agregar al Carrito</button>
+    </div>
+    </div>
+    <div class="product">
+        <img src="funda13.jpg" alt="iPhone"id="12">
+        <div class="product-info">
+        <h2>protectores de apple watch</h2>
+        <p>Color: Negro</p>
+        <p>material: plastico rijido</p>
+        <p>Precio: USD.$29.99</p>
+        <button onclick="agregarAlCarrito('protectores de apple watch', '29.99')">Agregar al Carrito</button>
+    </div>
+    </div>
+    <div class="product">
+        <img src="funda14.jpg" alt="iPhone"id="13">
+        <div class="product-info">
+        <h2>protectores de camaras de iphone 13 pro</h2>
+        <p>Color: transparente</p>
+        <p>material: vidrio templado</p>
+        <p>Precio: USD.$5.99</p>
+        <button onclick="agregarAlCarrito('protectores de camaras de iphone 13 pro', '5.99')">Agregar al Carrito</button>
+    </div>
+    </div>
+    <div class="product">
+        <img src="funda15.jpeg" alt="iPhone"id="14">
+        <div class="product-info">
+        <h2>cargador tipo c</h2>
+        <p>Color: Blanco</p>
+        <p>material: plastico</p>
+        <p>Precio: USD.$19.99</p>
+        <button onclick="agregarAlCarrito('cargador tipo c', '19.99')">Agregar al Carrito</button>
+    </div>
+    </div>
+    <div class="product">
+        <img src="funda16.jpg" alt="iPhone"id="15">
+        <div class="product-info">
+        <h2>cargador Lightning</h2>
+        <p>Color: Blanco</p>
+        <p>material: plastico</p>
+        <p>Precio: USD.$19.99</p>
+        <button onclick="agregarAlCarrito('cargador Lightning', '19.99')">Agregar al Carrito</button>
+    </div>
+    </div>
+    <script>
+        function agregarAlCarrito(productName, price) {
+            alert("¡" + productName + " agregado al carrito por " + price + "!");
+        }
+    </script>
+            <script>
+                function agregarAlCarrito(nombre, precio) {
+                  let carrito = localStorage.getItem('carrito') ? JSON.parse(localStorage.getItem('carrito')) : [];
+                  carrito.push({ nombre: nombre, precio: precio });
+                  localStorage.setItem('carrito', JSON.stringify(carrito));
+                  alert('Producto agregado al carrito');
+                }
+              </script>
+
+            <div id="myModal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="modalImage">
+              </div>
+              
+              <script>
+                  document.getElementById('1').addEventListener('click', function() {
+                      var modal = document.getElementById("myModal");
+                      var modalImg = document.getElementById("modalImage");
+                      modal.style.display = "block";
+                      modalImg.src = this.src;
+                  });
+              
+                  function closeModal() {
+                      var modal = document.getElementById("myModal");
+                      modal.style.display = "none";
+                  }
+              </script>
+             <script>
+                document.getElementById('2').addEventListener('click', function() {
+                    var modal = document.getElementById("myModal");
+                    var modalImg = document.getElementById("modalImage");
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                });
+            
+                function closeModal() {
+                    var modal = document.getElementById("myModal");
+                    modal.style.display = "none";
+                }
+            </script>
+             <script>
+                document.getElementById('3').addEventListener('click', function() {
+                    var modal = document.getElementById("myModal");
+                    var modalImg = document.getElementById("modalImage");
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                });
+            
+                function closeModal() {
+                    var modal = document.getElementById("myModal");
+                    modal.style.display = "none";
+                }
+            </script>
+             <script>
+                document.getElementById('4').addEventListener('click', function() {
+                    var modal = document.getElementById("myModal");
+                    var modalImg = document.getElementById("modalImage");
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                });
+            
+                function closeModal() {
+                    var modal = document.getElementById("myModal");
+                    modal.style.display = "none";
+                }
+            </script>
+           <script>
+              document.getElementById('5').addEventListener('click', function() {
+                  var modal = document.getElementById("myModal");
+                  var modalImg = document.getElementById("modalImage");
+                  modal.style.display = "block";
+                  modalImg.src = this.src;
+              });
+          
+              function closeModal() {
+                  var modal = document.getElementById("myModal");
+                  modal.style.display = "none";
+              }
+          </script>
+           <script>
+              document.getElementById('6').addEventListener('click', function() {
+                  var modal = document.getElementById("myModal");
+                  var modalImg = document.getElementById("modalImage");
+                  modal.style.display = "block";
+                  modalImg.src = this.src;
+              });
+          
+              function closeModal() {
+                  var modal = document.getElementById("myModal");
+                  modal.style.display = "none";
+              }
+          </script>
+             <script>
+                document.getElementById('7').addEventListener('click', function() {
+                    var modal = document.getElementById("myModal");
+                    var modalImg = document.getElementById("modalImage");
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                });
+            
+                function closeModal() {
+                    var modal = document.getElementById("myModal");
+                    modal.style.display = "none";
+                }
+            </script>
+           <script>
+              document.getElementById('8').addEventListener('click', function() {
+                  var modal = document.getElementById("myModal");
+                  var modalImg = document.getElementById("modalImage");
+                  modal.style.display = "block";
+                  modalImg.src = this.src;
+              });
+          
+              function closeModal() {
+                  var modal = document.getElementById("myModal");
+                  modal.style.display = "none";
+              }
+          </script>
+           <script>
+              document.getElementById('9').addEventListener('click', function() {
+                  var modal = document.getElementById("myModal");
+                  var modalImg = document.getElementById("modalImage");
+                  modal.style.display = "block";
+                  modalImg.src = this.src;
+              });
+          
+              function closeModal() {
+                  var modal = document.getElementById("myModal");
+                  modal.style.display = "none";
+              }
+          </script>
+             <script>
+                document.getElementById('10').addEventListener('click', function() {
+                    var modal = document.getElementById("myModal");
+                    var modalImg = document.getElementById("modalImage");
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                });
+            
+                function closeModal() {
+                    var modal = document.getElementById("myModal");
+                    modal.style.display = "none";
+                }
+            </script>
+           <script>
+              document.getElementById('11').addEventListener('click', function() {
+                  var modal = document.getElementById("myModal");
+                  var modalImg = document.getElementById("modalImage");
+                  modal.style.display = "block";
+                  modalImg.src = this.src;
+              });
+          
+              function closeModal() {
+                  var modal = document.getElementById("myModal");
+                  modal.style.display = "none";
+              }
+          </script>
+           <script>
+              document.getElementById('12').addEventListener('click', function() {
+                  var modal = document.getElementById("myModal");
+                  var modalImg = document.getElementById("modalImage");
+                  modal.style.display = "block";
+                  modalImg.src = this.src;
+              });
+          
+              function closeModal() {
+                  var modal = document.getElementById("myModal");
+                  modal.style.display = "none";
+              }
+          </script>
+             <script>
+                document.getElementById('13').addEventListener('click', function() {
+                    var modal = document.getElementById("myModal");
+                    var modalImg = document.getElementById("modalImage");
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                });
+            
+                function closeModal() {
+                    var modal = document.getElementById("myModal");
+                    modal.style.display = "none";
+                }
+            </script>
+           <script>
+              document.getElementById('14').addEventListener('click', function() {
+                  var modal = document.getElementById("myModal");
+                  var modalImg = document.getElementById("modalImage");
+                  modal.style.display = "block";
+                  modalImg.src = this.src;
+              });
+          
+              function closeModal() {
+                  var modal = document.getElementById("myModal");
+                  modal.style.display = "none";
+              }
+          </script>
+           <script>
+              document.getElementById('15').addEventListener('click', function() {
+                  var modal = document.getElementById("myModal");
+                  var modalImg = document.getElementById("modalImage");
+                  modal.style.display = "block";
+                  modalImg.src = this.src;
+              });
+          
+              function closeModal() {
+                  var modal = document.getElementById("myModal");
+                  modal.style.display = "none";
+              }
+          </script>                                                        
+</body>
+</html>

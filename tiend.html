@@ -1,0 +1,439 @@
+>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Celulares</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .store-info {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .store-info h1 {
+            margin: 0;
+        }
+        .store-info p {
+            margin: 5px 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .product {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .product img {
+            width: 200px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .product h2 {
+            margin-top: 0;
+        }
+        .product p {
+            margin-bottom: 10px;
+        }
+        .product button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .product-info {
+        flex: 1; 
+    }
+        .product button:hover {
+            background-color: #45a049;
+        }
+        .map {
+            margin-bottom: 20px;
+        }
+        .contact-info {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="store-info">
+            <h1>TecnoCity</h1>
+            <p>¡Encuentra tu celular perfecto con nosotros!</p>
+            <img src="logo.png" alt="logo">
+        </div>
+    </header>
+    <div class="container">
+        <div class="contact-info">
+            <p>Contáctanos: <a href="tel:4421057799">442-105-7799</a></p>
+            <a href="prueba.html" class="btn">Inicio</a>
+            <a href="accesorios.htm" class="btn">Ver accesorios</a>
+            <a href="tienda.html" class="btn">Ver otros productos</a>
+            <a href="carrito.html" class="btn">Carrito</a>      
+        </div>
+        <h1>Productos</h1>
+        <div class="product">
+            <img src="Iphone.jpg" alt="iPhone" id="iphoneImage">
+            <div class="product-info">
+                <h3><h2>iPhone 13 Pro</h2></h3>
+                <p>Color: Azul</p>
+                <p>Capacidad: 256GB</p>
+                <p>RAM: 6GB</p>
+                <p>Pantalla: Super Retina XDR OLED de 6.1 pulgadas</p>
+                <p>Cámara: Triple cámara de 12MP</p>
+                <p>Batería: 3095mAh</p>
+                <p>Precio: USD.$1,199.99</p>
+                <button onclick="agregarAlCarrito('iPhone 13 Pro', '1,199.99')">Agregar al Carrito</button>
+            </div>
+        </div>
+        <div class="product">
+            <img src="Samsung.jpg" alt="samsung" id="sansumgImage">
+            <div class="product-info">
+            <h2>Samsung Galaxy S21 Ultra</h2>
+            <p>Color: Negro</p>
+            <p>Capacidad: 512GB</p>
+            <p>RAM: 12GB</p>
+            <p>Pantalla: Dynamic AMOLED 2X de 6.8 pulgadas</p>
+            <p>Cámara: Cuádruple cámara de 108MP</p>
+            <p>Batería: 5000mAh</p>
+            <p>Precio: USD.$1,099.99</p>
+            <button onclick="agregarAlCarrito('Samsung Galaxy S21 Ultra', '1,099.99')">Agregar al Carrito</button>
+        </div>
+        </div>
+        <div class="product">
+            <img src="Huawei.jpg" alt="Huawei" id="2">
+            <div class="product-info">
+            <h2>Huawei P40 Pro</h2>
+            <p>Color: Blanco</p>
+            <p>Capacidad: 256GB</p>
+            <p>RAM: 8GB</p>
+            <p>Pantalla: OLED de 6.58 pulgadas</p>
+            <p>Cámara: Cuádruple cámara de 50MP</p>
+            <p>Batería: 4200mAh</p>
+            <p>Precio: USD.$999.99</p>
+            <button onclick="agregarAlCarrito('Huawei P40 Pro', '999.99')">Agregar al Carrito</button>
+        </div>
+        </div>
+        <div class="product">
+            <img src="Xiaomi.jpg" alt="Xiaomi"id="3">
+            <div class="product-info">
+            <h2>Xiaomi Mi 11</h2>
+            <p>Color: Negro</p>
+            <p>Capacidad: 128GB</p>
+            <p>RAM: 8GB</p>
+            <p>Pantalla: AMOLED de 6.81 pulgadas</p>
+            <p>Cámara: Triple cámara de 108MP</p>
+            <p>Batería: 4600mAh</p>
+            <p>Precio: USD.$799.99</p>
+            <button onclick="agregarAlCarrito('Xiaomi Mi 11', '799.99')">Agregar al Carrito</button>
+        </div>
+        </div>
+        <div class="product">
+            <img src="Google_Pixel.jpg" alt="Google Pixel"id="4">
+            <div class="product-info">
+            <h2>Google Pixel 6</h2>
+            <p>Color: Negro</p>
+            <p>Capacidad: 128GB</p>
+            <p>RAM: 8GB</p>
+            <p>Pantalla: AMOLED de 6.4 pulgadas</p>
+            <p>Cámara: Doble cámara de 50MP</p>
+            <p>Batería: 4080mAh</p>
+            <p>Precio: USD.$699.99</p>
+            <button onclick="agregarAlCarrito('Google Pixel 6', '699.99')">Agregar al Carrito</button>
+        </div>
+        </div>
+        <div class="product">
+            <img src="OnePlus.jpg" alt="iPhone" id="5">
+            <div class="product-info">
+            <h2>OnePlus 9 Pro</h2>
+            <p>Color: Negro</p>
+            <p>Capacidad: 256GB</p>
+            <p>RAM: 12GB</p>
+            <p>Pantalla: Fluid AMOLED de 6.7 pulgadas</p>
+            <p>Cámara: Triple cámara de 48MP</p>
+            <p>Batería: 4500mAh</p>
+            <p>Precio: USD.$899.99</p>
+            <button onclick="addToCartagregarAlCarrito('OnePlus 9 Pro', '899.99')">agregarAlCarrito</button>
+        </div>
+        </div>
+        <div class="product">
+            <img src="Motorola.jpg" alt="iPhone" id="6">
+            <div class="product-info">
+            <h2>Motorola Edge 20</h2>
+            <p>Color: Azul</p>
+            <p>Capacidad: 128GB</p>
+            <p>RAM: 8GB</p>
+            <p>Pantalla: OLED de 6.7 pulgadas</p>
+            <p>Cámara: Triple cámara de 108MP</p>
+            <p>Batería: 4000mAh</p>
+            <p>Precio: USD.$599.99</p>
+            <button onclick="agregarAlCarrito('Motorola Edge 20', '599.99')">Agregar al Carrito</button>
+        </div>
+        </div>
+        <div class="product">
+            <img src="LG.jpg" alt="iPhone" id="7">
+            <div class="product-info">
+            <h2>LG Velvet</h2>
+            <p>Color: Plata</p>
+            <p>Capacidad: 128GB</p>
+            <p>RAM: 6GB</p>
+            <p>Pantalla: OLED de 6.8 pulgadas</p>
+            <p>Cámara: Triple cámara de 48MP</p>
+            <p>Batería: 4300mAh</p>
+            <p>Precio: USD.$649.99</p>
+            <button onclick="agregarAlCarrito('LG Velvet', '649.99')">Agregar al Carrito</button>
+        </div>
+        </div>
+        <div class="product">
+            <img src="Sony.jpg" alt="iPhone" id="8">
+            <div class="product-info">
+            <h2>Sony Xperia 5 III</h2>
+            <p>Color: Negro</p>
+            <p>Capacidad: 256GB</p>
+            <p>RAM: 8GB</p>
+            <p>Pantalla: OLED de 6.1 pulgadas</p>
+            <p>Cámara: Triple cámara de 12MP</p>
+            <p>Batería: 4500mAh</p>
+            <p>Precio: USD.$849.99</p>
+            <button onclick="agregarAlCarrito('Sony Xperia 5 III', '849.99')">Agregar al Carrito</button>
+        </div>
+        </div>
+        <div class="product">
+            <img src="Asus.jpg" alt="iPhone" id="9">
+            <div class="product-info">
+            <h2>Asus ROG Phone 5</h2>
+            <p>Color: Negro</p>
+            <p>Capacidad: 256GB</p>
+            <p>RAM: 16GB</p>
+            <p>Pantalla: AMOLED de 6.78 pulgadas</p>
+            <p>Cámara: Triple cámara de 64MP</p>
+            <p>Batería: 6000mAh</p>
+            <p>Precio: USD.$999.99</p>
+            <button onclick="agregarAlCarrito('Asus ROG Phone 5', '999.99')">Agregar al Carrito</button>
+        </div>
+        </div>
+        
+        <script>
+            function agregarAlCarrito(nombre, precio) {
+              let carrito = localStorage.getItem('carrito') ? JSON.parse(localStorage.getItem('carrito')) : [];
+              carrito.push({ nombre: nombre, precio: precio });
+              localStorage.setItem('carrito', JSON.stringify(carrito));
+              alert('Producto agregado al carrito');
+            }
+          </script>
+        
+        <div id="myModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modalImage">
+          </div>
+          
+<script>
+    document.getElementById('iphoneImage').addEventListener('click', function() {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    });
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+</script>
+<script>
+    document.getElementById('sansumgImage').addEventListener('click', function() {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    });
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+</script>
+<script>
+    document.getElementById('2').addEventListener('click', function() {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    });
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+    </script>
+    <script>
+    document.getElementById('3').addEventListener('click', function() {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    });
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+</script>
+<script>
+    document.getElementById('4').addEventListener('click', function() {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    });
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+</script>
+<script>
+    document.getElementById('5').addEventListener('click', function() {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    });
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+</script>
+<script>
+    document.getElementById('6').addEventListener('click', function() {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    });
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+</script>
+<script>
+    document.getElementById('7').addEventListener('click', function() {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    });
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+</script>
+<script>
+    document.getElementById('8').addEventListener('click', function() {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    });
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+</script>
+<script>
+    document.getElementById('9').addEventListener('click', function() {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImage");
+        modal.style.display = "block";
+        modalImg.src = this.src;
+    });
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+</script>
+</body>
+</html>
+

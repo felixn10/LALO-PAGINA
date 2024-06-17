@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito de Compras</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .producto {
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .producto span {
+      font-weight: bold;
+    }
+
+    .producto button {
+      padding: 8px 16px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .producto button:hover {
+      background-color: #d32f2f;
+    }
+
+    .botones {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .botones button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .botones button:hover {
+      background-color: #45a049;
+    }
+
+    .total {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Carrito de Compras</h1>
+
+  <div id="lista-carrito">
+    <!-- Aquí se insertarán los productos del carrito dinámicamente -->
+  </div>
+
+  <div class="total" id="total">
+    Total: $0
+  </div>
+
+  <div class="botones">
+    <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+    <button onclick="realizarCompra()">Comprar</button>
+    <a href="prueba.html" style="text-decoration: none; color: white;">
+      <button style="background-color: #ff9800;">Seguir Comprando</button>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      mostrarCarrito();
+    });
+
+    function mostrarCarrito() {
+      let carrito = localStorage.getItem('carrito');
+      if (carrito) {
+        carrito = JSON.parse(carrito);
+        let listaCarrito = document.getElementById('lista-carrito');
+        listaCarrito.innerHTML = ''; // Limpiar el contenido anterior
+
+        let total = 0;
+
+        carrito.forEach((producto, index) => {
+          listaCarrito.innerHTML += `
+            <div class="producto">
+              <span>${producto.nombre} - $${producto.precio}</span>
+              <button onclick="eliminarProducto(${index})">Eliminar</button>
+            </div>
+          `;
+          total += producto.precio;
+        });
+
+        actualizarTotal(total);
+      } else {
+        // Manejar el caso en que no haya productos en el carrito
+        listaCarrito.innerHTML = '<p>El carrito está vacío</p>';
+        actualizarTotal(0);
+      }
+    }
+
+    function actualizarTotal(total) {
+      let totalElement = document.getElementById('total');
+      totalElement.textContent = `Total: $${total}`;
+    }
+
+    function eliminarProducto(index) {
+      let carrito = JSON.parse(localStorage.getItem('carrito'));
+      carrito.splice(index, 1); // Eliminar el producto del array
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      mostrarCarrito(); // Actualizar la vista del carrito
+    }
+
+    function vaciarCarrito() {
+      localStorage.removeItem('carrito'); // Vaciar todo el carrito
+      mostrarCarrito(); // Actualizar la vista del carrito
+    }
+
+    function realizarCompra() {
+      alert('Compra realizada correctamente. Gracias por su compra!');
+      localStorage.removeItem('carrito'); // Vaciar el carrito después de la compra
+      mostrarCarrito(); // Actualizar la vista del carrito
+    }
+  </script>
+</body>
+</html>
